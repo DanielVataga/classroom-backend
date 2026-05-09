@@ -1,7 +1,10 @@
 import cors from "cors";
 
 import express from "express";
+
 import subjectsRouter from "./routes/subjects";
+import usersRouter from "./routes/users";
+import classesRouter from "./routes/classes";
 
 import { toNodeHandler } from "better-auth/node";
 import { auth } from "./lib/auth";
@@ -25,6 +28,9 @@ app.all("/api/auth/*splat", toNodeHandler(auth));
 app.use(express.json());
 
 app.use("/api/subjects", subjectsRouter);
+app.use("/api/users", usersRouter);
+app.use("/api/classes", classesRouter);
+
 
 app.get("/", (req, res) => {
   res.send("Hello world!");
